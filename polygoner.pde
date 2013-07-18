@@ -14,13 +14,13 @@ class Polygoner {
     myRotation = tempRotation;
   }
   
-  int display(int h, int m,int s) {
+  void display(int h, int m,int s) {
     if(s == 0) {
       background(255);
     }
       myRadius = map(s, 0, 59, 10, 300);  
       numVerts = h;      
-      myRotation += m * r;
+      myRotation -= 0.0025;
       //fill(random(128,192),random(128,192),random(128,192));
       beginShape();
       for (int i = 0; i < numVerts; i++) {
@@ -31,29 +31,22 @@ class Polygoner {
       t += 0.01;
       r += 0.01;
       
-      println("hours: " + h + " / hours halved: " + h/2);
+      println("hours: " + h);
       println("minutes: " + m);
       println("seconds: " + s);
-      return numVerts;
   }
-  
-boolean finished() {
-    // Balls fade out
-    // life--;
-    if (life < 0) {
-      return true;
-    }
-    else {
-      return false;
+  void secCircles(int s) {
+    fill(0);
+    stroke(255);
+    for(int i  = 0; i < s; i++){
+      ellipse(width-10, (height-10)-10*i, 10, 10);
     }
   }
- 
-boolean finishedByOpacity () {    
-    if (opacity<=0) {
-      return true;
+  void minCircles(int m) {
+    fill(0);
+    stroke(255);
+    for(int i  = 0; i < m; i++){
+      ellipse(10, 10*i+10, 10, 10);
     }
-    else {
-      return false;
-    }
-  }// func
+  }
 }

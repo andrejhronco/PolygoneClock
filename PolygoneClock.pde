@@ -18,10 +18,18 @@ void setup() {
 void draw() {
   int s = second();  // Values from 0 - 59
   int m = minute();  // Values from 0 - 59
-  int h = (int)map(hour(),0, 23, 1, 24);    // Values from 0 - 23
-  //background(255);  
+  int h = hour();    // Values from 0 - 23
+  if(h == 0){
+    h = 12;
+  }
+  if(h > 12){
+    h -= 12;
+  }
+  if(h == 1){
+     h = 48;
+  }
   for(int i = 0; i < coln*2; i++){ // setup a grid
-    stroke(128,128,128,0.99); //rotation*255
+    stroke(255,0); //rotation*255
     fill(255,10);
     line(i*50,0, i*50, height);
     for(int g = 0; g < coln; g++){
@@ -31,9 +39,6 @@ void draw() {
   
   stroke(noise(s)*255);
   polygoners.display(h,m,s);
-  
-  //s += 0.01;
-  //println("vertices: " + polygoners.display());
-  //println("speed: " + (int)map(rotation,0.0, 1.0, 0, 100.1690));
-  
+  polygoners.secCircles(s);
+  polygoners.minCircles(m);
 }
