@@ -37,7 +37,7 @@ void draw() {
     }
   }
   
-  stroke(noise(s)*255);
+  stroke(noise(s)*255, noise(s)*255);
   polygoners.display(h,m,s);
   polygoners.secCircles(s);
   polygoners.minCircles(m);
